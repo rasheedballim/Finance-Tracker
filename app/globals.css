@@ -18,4 +18,7 @@
   .btn-red {
     @apply text-white capitalize  bg-red-600 border-red-600;
   }
+  .btn-primary {
+    @apply bg-slate-700 border-slate-700 text-lime-400;
+  }
 }
