@@ -18,7 +18,7 @@ function Nav() {
           <small>Hi Rasheed</small>
         </div>
         {/* Logout & Stats*/}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <div>
             <ImStatsDots className=" text-2xl" />
           </div>
