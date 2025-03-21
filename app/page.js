@@ -37,13 +37,43 @@ const DUMMY_DATA = [
 ];
 
 export default function Home() {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [showAddIncomeModal, setshowAddIncomeModal] = useState(false);
   return (
     <>
-      {/*Modal */}
-      <Modal show={modalIsOpen} onClose={setModalIsOpen}>
+      {/* add income Modal */}
+      <Modal show={showAddIncomeModal} onClose={setshowAddIncomeModal}>
         {" "}
-        <h3> Hello WWorld</h3>
+        <form className="flex flex-col gap-4">
+          <div className="input-group">
+            <label htmlFor="amount">Income Amount</label>
+            <input
+              className="input"
+              type="number"
+              name="amount"
+              min={0.01}
+              step={0.01}
+              placeholder="Enter Income Amount"
+              required
+            ></input>
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="description">Income Amount</label>
+            <input
+              className="input"
+              type="text"
+              name="description"
+              min={0.01}
+              step={0.01}
+              placeholder="Enter Income Description"
+              required
+            ></input>
+          </div>
+          <button type="submit" className="btn btn-primary ">
+            Add Entry
+          </button>
+        </form>
+        ;
       </Modal>
 
       <main className="container max-w-2xl py-6 px-6 mx-auto">
@@ -53,15 +83,17 @@ export default function Home() {
         </section>
 
         <section className="flex items-center gap-2 py-3">
+          <button onClick={() => {}} className="btn btn-primary">
+            + Expenses
+          </button>
           <button
             onClick={() => {
-              setModalIsOpen(true);
+              setshowAddIncomeModal(true);
             }}
             className="btn btn-primary"
           >
-            + Expenses
+            + Incomeee
           </button>
-          <button className="btn btn-primary">+ Income</button>
         </section>
         {/*My Expenses */}
         <section className="py-6">
