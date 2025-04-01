@@ -2,7 +2,7 @@ function Modal({ show, onClose, children }) {
   return (
     <div
       style={{
-        transform: show ? "translateX(0%)" : "translateX(-400%)",
+        transform: show ? "translateX(0%)" : "translateX(-200%)",
       }}
       className="absolute top-0 left-0 w-full h-full z-10 transition-all duration-500"
     >
