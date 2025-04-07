@@ -1,29 +1,28 @@
 import { useRef, useEffect, useContext } from "react";
 import { currencyFormatter } from "@/lib/utils";
 
-import { financeContext } from "@/lib/store/finance-context";
-
-// Icons
+//ICONS
 import { FaRegTrashAlt } from "react-icons/fa";
+
+import { financeContext } from "@/lib/store/finance-context";
 
 import Modal from "@/components/Modal";
 
 function AddIncomeModal({ show, onClose }) {
   const amountRef = useRef();
   const descriptionRef = useRef();
+
   const { income, addIncomeItem, removeIncomeItem } =
     useContext(financeContext);
 
-  // Handler Functions
+  // handler Functions
   const addIncomeHandler = async (e) => {
     e.preventDefault();
-
     const newIncome = {
       amount: amountRef.current.value,
       description: descriptionRef.current.value,
       createdAt: new Date(),
     };
-
     try {
       await addIncomeItem(newIncome);
       descriptionRef.current.value = "";
@@ -36,8 +35,11 @@ function AddIncomeModal({ show, onClose }) {
   const deleteIncomeEntryHandler = async (incomeId) => {
     try {
       await removeIncomeItem(incomeId);
+      
     } catch (error) {
       console.log(error.message);
+
+      
     }
   };
 
