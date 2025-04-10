@@ -1,6 +1,6 @@
 "use client";
 import { currencyFormatter } from "@/lib/utils";
-import ExpenseItems from "@/components/ExpenseCategoryItem";
+import ExpenseCategoryItem from "@/components/ExpenseCategoryItem";
 import { useState, useContext, useEffect } from "react";
 import { financeContext } from "@/lib/store/finance-context";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
@@ -26,7 +26,8 @@ export default function Home() {
       }, 0);
 
     setBalance(newBalance);
-  });
+  }, [expenses, income]);
+
   return (
     <>
       {/*Add Income Modal */}
@@ -64,24 +65,19 @@ export default function Home() {
             + Incomeee
           </button>
         </section>
-        {/*My Expenses */}
-        <section className="py-6">
-          <h3 className="text-2xl"> My Expenses</h3>
-          <div className="flex flex-col gap-2 mt-4">
+         {/* Expenses */}
+         <section className="py-6">
+          <h3 className="text-2xl">My Expenses</h3>
+          <div className="flex flex-col gap-4 mt-6">
             {expenses.map((expense) => {
-              return (
-                <ExpenseItems
-                  key={expense.id}
-                  colour={expense.colour}
-                  title={expense.title}
-                  total={expense.total}
-                />
-              );
+              return <ExpenseCategoryItem key={expense.id} expense={expense} />;
             })}
           </div>
         </section>
-        <section>
-          <h3 className="py-6 px-6">Stats</h3>
+
+        {/* Chart Section */}
+        <section className="py-6">
+          <h3 className="text-2xl">Stats</h3>
           <div className="w-1/2 mx-auto">
             <Doughnut
               data={{
