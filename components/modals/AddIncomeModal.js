@@ -1,5 +1,6 @@
 import { useRef, useEffect, useContext } from "react";
 import { currencyFormatter } from "@/lib/utils";
+import { authContext } from "@/lib/store/auth-context";
 
 //ICONS
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -15,13 +16,18 @@ function AddIncomeModal({ show, onClose }) {
   const { income, addIncomeItem, removeIncomeItem } =
     useContext(financeContext);
 
+    const {user} = useContext(authContext);
+
   // handler Functions
   const addIncomeHandler = async (e) => {
     e.preventDefault();
+
+
     const newIncome = {
       amount: +amountRef.current.value,
       description: descriptionRef.current.value,
       createdAt: new Date(),
+      uid: user.uid,
     };
     try {
       await addIncomeItem(newIncome);

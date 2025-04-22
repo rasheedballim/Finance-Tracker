@@ -5,10 +5,14 @@ import { currencyFormatter } from "@/lib/utils";
 import ExpenseCategoryItem from "@/components/ExpenseCategoryItem";
 import { useState, useContext, useEffect } from "react";
 import { financeContext } from "@/lib/store/finance-context";
+
+import { authContext } from "@/lib/store/auth-context";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import AddExpensesModal from "@/components/modals/AddExpensesModal";
 import AddIncomeModal from "@/components/modals/AddIncomeModal";
+import SignIn from "@/components/SignIn";
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -18,6 +22,9 @@ export default function Home() {
 
   const [balance, setBalance] = useState(0);
   const { expenses, income } = useContext(financeContext);
+  const {user} = useContext(authContext);
+
+
   useEffect(() => {
     const newBalance =
       income.reduce((total, i) => {
@@ -29,6 +36,10 @@ export default function Home() {
 
     setBalance(newBalance);
   }, [expenses, income]);
+
+  if(!user){
+    return <SignIn></SignIn>
+  }
 
   return (
     <>
@@ -67,8 +78,8 @@ export default function Home() {
             + Incomeee
           </button>
         </section>
-         {/* Expenses */}
-         <section className="py-6">
+        {/* Expenses */}
+        <section className="py-6">
           <h3 className="text-2xl">My Expenses</h3>
           <div className="flex flex-col gap-4 mt-6">
             {expenses.map((expense) => {
@@ -88,7 +99,8 @@ export default function Home() {
                   {
                     label: "Expenses",
                     data: expenses.map((expense) => expense.total),
-                    backgroundColor: ["#000F"],
+                    backgroundColor: expenses.map((expense) => expense.color),
+                    borderColor: ["#18181b"],
                     borderWidth: 5,
                   },
                 ],
