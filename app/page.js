@@ -13,7 +13,6 @@ import AddExpensesModal from "@/components/modals/AddExpensesModal";
 import AddIncomeModal from "@/components/modals/AddIncomeModal";
 import SignIn from "@/components/SignIn";
 
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Home() {
@@ -22,8 +21,7 @@ export default function Home() {
 
   const [balance, setBalance] = useState(0);
   const { expenses, income } = useContext(financeContext);
-  const {user} = useContext(authContext);
-
+  const { user } = useContext(authContext);
 
   useEffect(() => {
     const newBalance =
@@ -37,8 +35,8 @@ export default function Home() {
     setBalance(newBalance);
   }, [expenses, income]);
 
-  if(!user){
-    return <SignIn></SignIn>
+  if (!user) {
+    return <SignIn></SignIn>;
   }
 
   return (
@@ -90,6 +88,7 @@ export default function Home() {
 
         {/* Chart Section */}
         <section className="py-6">
+          <a id="stats" />
           <h3 className="text-2xl">Stats</h3>
           <div className="w-1/2 mx-auto">
             <Doughnut

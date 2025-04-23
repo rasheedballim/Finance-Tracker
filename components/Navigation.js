@@ -11,7 +11,7 @@ function Nav() {
           <div className="flex items-center gap-2">
             {/* User Pic*/}
             <div className="h-[40px] w-[40px] rounded-full overflow-hidden">
-            <img
+              <img
                 className="object-cover w-full h-full"
                 src={user.photoURL}
                 alt={user.displayName}
@@ -27,10 +27,14 @@ function Nav() {
         {user && !loading && (
           <div className="flex items-center gap-4">
             <div>
-              <ImStatsDots className=" text-2xl" />
+              <a href="#stats">
+                <ImStatsDots className=" text-2xl" />
+              </a>
             </div>
             <div>
-              <button onClick={logout} className="btn btn-red">Sign Out</button>
+              <button onClick={logout} className="btn btn-red">
+                Sign Out
+              </button>
             </div>
           </div>
         )}
