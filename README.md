@@ -1,44 +1,33 @@
-# Finance Tracker
+# Finance Tracker 💰
 
-## About
+## 📘 About
 
-This is a simple web-based finance tracker I built to help keep track of income and expenses. It’s meant to be easy to use without unnecessary features — just log what you earn and spend, and get a clear view of your monthly finances.
+This is a simple web-based expense tracker I built to help keep track of my income and expenses. It’s meant to be easy to use without unnecessary hence the simple user interface.
+Sign-in with your google account to log what you earn and spend to get a clear view of your finances.
 
-You can access it here: [https://expensetracker.co.za](https://expensetracker.co.za)
+You can access it here: [https://expense-tracker-za.vercel.app/](https://expense-tracker-za.vercel.app/)
 
 ---
 
-## Features
+## ✨ Features
 
 - Add income and expenses
-- View totals for each month
+- Firebase authentication (secure login)
+- Data saved to your account and synced across devices
+- View totals for each expense category
 - Simple interface to keep things quick and clear
 - Edit or delete entries
+- Graphical representation of expenses
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- HTML, CSS, JavaScript  
-- (Add any backend or database tech if applicable)
-
----
-
-## Future Improvements
-
-- Monthly budget goals
-- Export to CSV
-- Graphs and visual breakdowns
-- Login system for saving data across devices
+- **Frontend:** React, JavaScript, Tailwind CSS  
+- **Backend & Auth:** Firebase  
+- **Database:** Firebase Firestore 
 
 ---
-
-## License
-
-This project is open source under the MIT License.
-
----
-
-## Contact
+## 📬 Contact
 
 If you have any suggestions or issues, feel free to reach out or submit a pull request.
